@@ -10,7 +10,7 @@ build:
   tools:
     python: "3.13"
   jobs:
-    pre_build:
+    post_build:
       - mkdir -p $READTHEDOCS_OUTPUT/html/api
       - doxygen doc/doxygen/Doxyfile.in
       - mv docs-output $READTHEDOCS_OUTPUT/html/api/cxx
