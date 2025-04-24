@@ -10,6 +10,10 @@ build:
   tools:
     python: "3.13"
   jobs:
+    pre_build:
+      - mkdir -p $READTHEDOCS_OUTPUT/api
+      - doxygen doc/doxygen/Doxyfile.in
+      - mv docs-output $READTHEDOCS_OUTPUT/api/cxx
     pre_install:
       - pip install mkdocs-material
 
