@@ -11,9 +11,9 @@ build:
     python: "3.13"
   jobs:
     pre_build:
-      - mkdir -p $READTHEDOCS_OUTPUT/api
+      - mkdir -p $READTHEDOCS_OUTPUT/html/api
       - doxygen doc/doxygen/Doxyfile.in
-      - mv docs-output $READTHEDOCS_OUTPUT/api/cxx
+      - mv docs-output $READTHEDOCS_OUTPUT/html/api/cxx
     pre_install:
       - pip install mkdocs-material
 
