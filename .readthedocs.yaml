@@ -16,8 +16,7 @@ build:
     build:
       html:
         - conda install -c nvidia cuda-compiler cuda-libraries-dev
-        - mkdir build && cd build cmake .. -GNinja -DWITH_CUDA=YES -DISCE3_FETCH_DEPS=NO -DCMAKE_INSTALL_PREFIX=./install
-        - cd build && ninja install
+        - mkdir build && cd build cmake .. -GNinja -DWITH_CUDA=YES -DISCE3_FETCH_DEPS=NO -DCMAKE_INSTALL_PREFIX=./install && ninja install
     post_build:
       - mkdir -p $READTHEDOCS_OUTPUT/html/api
       - doxygen doc/doxygen/Doxyfile.in
