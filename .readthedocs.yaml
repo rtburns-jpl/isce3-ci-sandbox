@@ -4,12 +4,19 @@
 # Required
 version: 2
 
+conda:
+  environment: environment.yml
+
 # Set the OS, Python version, and other tools you might need
 build:
   os: ubuntu-24.04
   tools:
     python: "3.13"
   jobs:
+    build:
+      - conda install -c nvidia cuda-compiler cuda-libraries-dev
+      - mkdir build && cd build cmake .. -GNinja -DWITH_CUDA=YES -DISCE3_FETCH_DEPS=NO -DCMAKE_INSTALL_PREFIX=./install
+      - cd build && ninja install
     post_build:
       - mkdir -p $READTHEDOCS_OUTPUT/html/api
       - doxygen doc/doxygen/Doxyfile.in
